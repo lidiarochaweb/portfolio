@@ -6,35 +6,28 @@
   <title>Lídia Rocha | Portfólio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    /* Reset e estilos base */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    :root {
-      --primary: #6e48aa;
-      --secondary: #9d50bb;
-      --accent: #ff6b8b;
-      --light: #f8f9fa;
-      --dark: #343a40;
-      --text: #333;
-    }
-
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
-      color: var(--text);
+      color: #333;
       background-color: #f9f9f9;
     }
 
-   header {
-	background: linear-gradient(135deg, #000, var(--secondary));
-	color: white;
-	text-align: center;
-	padding: 2rem 1rem;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+    /* Cabeçalho */
+    header {
+      background: linear-gradient(135deg, #6e48aa, #9d50bb);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
     header h1 {
       font-size: 2.5rem;
@@ -51,100 +44,118 @@
       display: flex;
       justify-content: center;
       gap: 1.5rem;
-      flex-wrap: wrap;
     }
 
     nav a {
       color: white;
       text-decoration: none;
       font-weight: 500;
-      padding: 0.6rem 1.2rem;
-      border-radius: 30px;
-      transition: all 0.3s;
-      border: 2px solid rgba(255, 255, 255, 0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background-color 0.3s;
     }
 
     nav a:hover {
       background-color: rgba(255, 255, 255, 0.2);
-      border-color: rgba(255, 255, 255, 0.5);
-      transform: translateY(-2px);
     }
 
+    /* Seções */
     section {
       padding: 3rem 1rem;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
     section h2 {
-      font-size: 2.2rem;
+      font-size: 2rem;
       margin-bottom: 1.5rem;
       text-align: center;
-      color: var(--primary);
+      color: #6e48aa;
       position: relative;
     }
 
     section h2::after {
       content: '';
       display: block;
-      width: 80px;
+      width: 60px;
       height: 4px;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
+      background: linear-gradient(to right, #6e48aa, #9d50bb);
       margin: 0.5rem auto;
       border-radius: 2px;
     }
 
+    /* Sobre Mim */
     #sobre {
       background-color: white;
-      border-radius: 10px;
+      border-radius: 8px;
       margin: 2rem auto;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     }
 
     #sobre p {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
       text-align: justify;
     }
 
+    /* Projetos */
     #projetos {
       background-color: white;
-      border-radius: 10px;
+      border-radius: 8px;
       margin: 2rem auto;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .projetos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
     }
 
     .projeto {
-      text-align: center;
-      padding: 1.5rem;
+      background: #f8f9fa;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .projeto:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
 
     .projeto h3 {
-      color: var(--primary);
-      margin-bottom: 1.5rem;
-      font-size: 1.8rem;
+      padding: 1rem;
+      background: linear-gradient(135deg, #6e48aa, #9d50bb);
+      color: white;
+      text-align: center;
+    }
+
+    .projeto p {
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .projeto-imagens {
+      position: relative;
+      display: flex;
+      overflow: hidden;
     }
 
     .imagem-container {
       position: relative;
-      display: inline-block;
-      margin: 1rem 0 2rem;
-      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
+      flex: 1;
     }
 
-    .imagem-projeto {
-      display: block;
-      max-width: 100%;
-      height: auto;
-      border-radius: 10px;
-      transition: transform 0.5s ease, filter 0.5s ease;
+    .projeto-imagem {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
     }
 
-    .imagem-container:hover .imagem-projeto {
-      transform: scale(1.05);
-      filter: brightness(0.8);
+    .imagem-container:hover .projeto-imagem {
+      transform: scale(1.1);
     }
 
     .imagem-overlay {
@@ -153,53 +164,156 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(110, 72, 170, 0.7);
+      background-color: rgba(110, 72, 170, 0.8);
+      color: white;
       display: flex;
       justify-content: center;
       align-items: center;
       opacity: 0;
       transition: opacity 0.3s ease;
-      border-radius: 10px;
     }
 
     .imagem-container:hover .imagem-overlay {
       opacity: 1;
     }
 
-    .botao-ampliar {
+    .imagem-overlay button {
       background: white;
-      color: var(--primary);
+      color: #6e48aa;
       border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 30px;
-      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
       cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .imagem-overlay button:hover {
+      background: #f1f1f1;
+    }
+
+    /* Container para o Projeto Dornela */
+    #projeto-dornela {
+      padding: 0;
+      margin: 2rem auto;
+      max-width: 100%;
+    }
+
+    .dornela-container {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      background: linear-gradient(135deg, #6e48aa, #9d50bb);
+      color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .dornela-imagem {
+      flex: 1;
+      min-height: 350px;
+      background: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80') center/cover no-repeat;
+    }
+
+    .dornela-conteudo {
+      flex: 1;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .dornela-titulo {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      color: white;
+      text-align: left;
+    }
+
+    .dornela-subtitulo {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .dornela-formula {
+      font-size: 1.5rem;
+      font-style: italic;
+      margin: 1rem 0;
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+    }
+
+    .dornela-info {
+      margin: 1.5rem 0;
+    }
+
+    .dornela-info p {
+      margin: 0.8rem 0;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      transition: all 0.3s;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
-    .botao-ampliar:hover {
-      background: var(--accent);
-      color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .projeto p {
-      max-width: 600px;
-      margin: 0 auto;
+    .dornela-info i {
+      margin-right: 10px;
+      width: 20px;
       text-align: center;
-      color: #666;
     }
 
+    .dornela-divider {
+      height: 2px;
+      background: rgba(255, 255, 255, 0.3);
+      margin: 1.5rem 0;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-conteudo {
+      max-width: 90%;
+      max-height: 90%;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .modal-fechar {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #333;
+    }
+
+    .modal-imagem {
+      max-width: 100%;
+      max-height: 70vh;
+    }
+
+    /* Contato */
     #contato {
       background-color: white;
-      border-radius: 10px;
+      border-radius: 8px;
       margin: 2rem auto;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
       text-align: center;
     }
 
@@ -228,73 +342,40 @@
     }
 
     #contato a {
-      color: var(--primary);
+      color: #6e48aa;
       text-decoration: none;
       transition: color 0.3s;
     }
 
     #contato a:hover {
-      color: var(--secondary);
+      color: #9d50bb;
       text-decoration: underline;
     }
 
+    /* Rodapé */
     footer {
       text-align: center;
       padding: 1.5rem;
-      background: var(--dark);
+      background: #333;
       color: white;
     }
 
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
-      z-index: 1000;
+    /* Estilo para blocos vazios */
+    .bloco-vazio .imagem-container {
+      background-color: #e9ecef;
+      display: flex;
       justify-content: center;
       align-items: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      min-height: 200px;
     }
 
-    .modal.mostrar {
-      display: flex;
-      opacity: 1;
+    .bloco-vazio .imagem-container::after {
+      content: "➕ Adicionar Imagem";
+      color: #6c757d;
+      font-size: 1.2rem;
     }
 
-    .modal-conteudo {
-      position: relative;
-      max-width: 90%;
-      max-height: 90%;
-    }
-
-    .modal-imagem {
-      max-width: 100%;
-      max-height: 80vh;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    }
-
-    .modal-fechar {
-      position: absolute;
-      top: -40px;
-      right: 0;
-      color: white;
-      background: none;
-      border: none;
-      font-size: 2rem;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-
-    .modal-fechar:hover {
-      color: var(--accent);
-    }
-
+    /* Responsividade */
     @media (max-width: 768px) {
       header h1 {
         font-size: 2rem;
@@ -302,12 +383,31 @@
       
       nav {
         flex-direction: column;
-        gap: 0.8rem;
+        gap: 0.5rem;
       }
       
-      .botao-ampliar {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
+      .projetos-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .projeto-imagens {
+        flex-direction: column;
+      }
+      
+      .dornela-container {
+        flex-direction: column;
+      }
+      
+      .dornela-imagem {
+        min-height: 250px;
+      }
+      
+      .dornela-titulo {
+        font-size: 1.8rem;
+      }
+      
+      .dornela-subtitulo {
+        font-size: 1.2rem;
       }
     }
   </style>
@@ -334,27 +434,135 @@
 
   <section id="projetos">
     <h2>Projetos</h2>
-    <div class="projeto">
-      <h3>Identidade visual</h3>
-      <div class="imagem-container">
-        <img src="dornela.jpeg" alt="Projeto Identidade Visual" class="imagem-projeto">
+    <div class="projetos-grid">
+      <!-- Blocos vazios adicionados -->
+      <div class="projeto bloco-vazio">
+        <h3>Bloco Vazio 1</h3>
+        <div class="projeto-imagens">
+          <div class="imagem-container">
+            <!-- Espaço para adicionar imagem posteriormente -->
+          </div>
+        </div>
+        <p>Descrição do projeto a ser adicionada.</p>
+      </div>
+      
+      <div class="projeto bloco-vazio">
+        <h3>Bloco Vazio 2</h3>
+        <div class="projeto-imagens">
+          <div class="imagem-container">
+            <!-- Espaço para adicionar imagem posteriormente -->
+          </div>
+        </div>
+        <p>Descrição do projeto a ser adicionada.</p>
+      </div>
+      
+      <div class="projeto bloco-vazio">
+        <h3>Bloco Vazio 3</h3>
+        <div class="projeto-imagens">
+          <div class="imagem-container">
+            <!-- Espaço para adicionar imagem posteriormente -->
+          </div>
+        </div>
+        <p>Descrição do projeto a ser adicionada.</p>
+      </div>
+      
+      <!-- Projetos existentes -->
+      <div class="projeto">
+        <h3>Identidade Visual</h3>
+        <div class="projeto-imagens">
+          <div class="imagem-container">
+            <img src="Lucid_Origin_Professional_social_media_post_design_for_a_digit_0.jpg" alt="Projeto identidade visual" class="projeto-imagem">
+            <div class="imagem-overlay">
+              <button onclick="abrirModal('Lucid_Origin_Professional_social_media_post_design_for_a_digit_0.jpg')">Ampliar</button>
+            </div>
+          </div>
+          <div class="imagem-container">
+            <img src="Lucid_Origin_Professional_social_media_post_design_for_a_digit_1.jpg" alt="Projeto identidade visual" class="projeto-imagem">
+            <div class="imagem-overlay">
+              <button onclick="abrirModal('Lucid_Origin_Professional_social_media_post_design_for_a_digit_1.jpg')">Ampliar</button>
+            </div>
+          </div>
+          <div class="imagem-container">
+            <img src="Lucid_Origin_Professional_social_media_post_design_for_a_digit_2.jpg" alt="Projeto identidade visual" class="projeto-imagem">
+            <div class="imagem-overlay">
+              <button onclick="abrirModal('Lucid_Origin_Professional_social_media_post_design_for_a_digit_2.jpg')">Ampliar</button>
+            </div>
+          </div>
+        </div>
+        <p>Criação de logotipo, paleta de cores e materiais gráficos para cliente do setor de moda.</p>
+      </div>
+      
+      <div class="projeto">
+        <h3>Banners e Panfletos</h3>
+        <div class="projeto-imagens">
+          <div class="imagem-container">
+            <img src="Plataforma online Fundamenta e 1°médio 31 8755-2883 (2).png" alt="Projeto banners e panfletos" class="projeto-imagem">
+            <div class="imagem-overlay">
+              <button onclick="abrirModal('Plataforma online Fundamenta e 1°médio 31 8755-2883 (2).png')">Ampliar</button>
+            </div>
+          </div>
+          <div class="imagem-container">
+            <img src="Lucid_Origin_Professional_social_media_post_design_for_a_digit_1.jpg" alt="Projeto banners e panfletos" class="projeto-imagem">
+            <div class="imagem-overlay">
+              <button onclick="abrirModal('Lucid_Origin_Professional_social_media_post_design_for_a_digit_1.jpg')">Ampliar</button>
+            </div>
+          </div>
+          <div class="imagem-container">
+            <img src="Lucid_Origin_Professional_social_media_post_design_for_a_digit_2.jpg" alt="Projeto banners e panfletos" class="projeto-imagem">
+            <div class="imagem-overlay">
+              <button onclick="abrirModal('Lucid_Origin_Professional_social_media_post_design_for_a_digit_2.jpg')">Ampliar</button>
+            </div>
+          </div>
+        </div>
+        <p>Criação de materiais promocionais para campanhas de marketing.</p>
+      </div>
+      
+      <div class="projeto">
+        <h3>Social Media</h3>
+        <div class="projeto-imagens">
+          <div class="imagem-container">
+            <img src="Lucid_Origin_Professional_social_media_post_design_for_a_digit_0.jpg" alt="Projeto social media" class="projeto-imagem">
+            <div class="imagem-overlay">
+              <button onclick="abrirModal('Lucid_Origin_Professional_social_media_post_design_for_a_digit_0.jpg')">Ampliar</button>
+            </div>
+          </div>
+          <div class="imagem-container">
+            <img src="Lucid_Origin_Professional_social_media_post_design_for_a_digit_1.jpg" alt="Projeto social media" class="projeto-imagem">
+            <div class="imagem-overlay">
+              <button onclick="abrirModal('Lucid_Origin_Professional_social_media_post_design_for_a_digit_1.jpg')">Ampliar</button>
+            </div>
+          </div>
+          <div class="imagem-container">
+            <img src="Lucid_Origin_Professional_social_media_post_design_for_a_digit_2.jpg" alt="Projeto social media" class="projeto-imagem">
+            <div class="imagem-overlay">
+              <button onclick="abrirModal('Lucid_Origin_Professional_social_media_post_design_for_a_digit_2.jpg')">Ampliar</button>
+            </div>
+          </div>
+        </div>
+        <p>Planejamento e execução de campanha digital com foco em engajamento e conversão.</p>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Modal para imagens -->
+  <div id="modal" class="modal">
+    <div class="modal-conteudo">
+      <button class="modal-fechar" onclick="fecharModal()">&times;</button>
+      <img id="modal-imagem" class="modal-imagem" src="" alt="Imagem ampliada">
+    </div>
+  </div>
+
+    <div class="imagem-container">
+        <img src="dornela.jpeg" alt="Projeto Dornela" class="imagem-projeto-truta" style="display: block; margin: 0 auto;">
         <div class="imagem-overlay">
           <button class="botao-ampliar" onclick="abrirModal()">
             <i class="fas fa-search-plus"></i> Ampliar Imagem
           </button>
         </div>
       </div>
-      <p>Criação de logotipo, paleta de cores e materiais gráficos para cliente do setor de moda.</p>
-    </div>
-  </section>
 
-  <!-- Modal para imagem ampliada -->
-  <div id="modal" class="modal">
-    <div class="modal-conteudo">
-      <button class="modal-fechar" onclick="fecharModal()">&times;</button>
-      <img src="https://cdn.discordapp.com/attachments/1348115866885165139/1413241125409390652/WhatsApp_Image_2025-09-04_at_16.13.23_1.jpeg" alt="Projeto Identidade Visual" class="modal-imagem">
-    </div>
-  </div>
 
   <section id="contato">
     <h2>Contato</h2>
@@ -371,30 +579,23 @@
   </footer>
 
   <script>
-    // Funções para o modal de imagem ampliada
-    function abrirModal() {
-      document.getElementById('modal').classList.add('mostrar');
-      document.body.style.overflow = 'hidden'; // Impede a rolagem da página quando o modal está aberto
+    // Funções para o modal de imagens
+    function abrirModal(src) {
+      document.getElementById('modal-imagem').src = src;
+      document.getElementById('modal').style.display = 'flex';
     }
 
     function fecharModal() {
-      document.getElementById('modal').classList.remove('mostrar');
-      document.body.style.overflow = 'auto'; // Restaura a rolagem da página
+      document.getElementById('modal').style.display = 'none';
     }
 
     // Fechar o modal clicando fora da imagem
-    document.getElementById('modal').addEventListener('click', function(e) {
-      if (e.target === this) {
+    window.onclick = function(event) {
+      const modal = document.getElementById('modal');
+      if (event.target === modal) {
         fecharModal();
       }
-    });
-
-    // Fechar o modal pressionando a tecla ESC
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        fecharModal();
-      }
-    });
+    };
 
     // Adicionar smooth scrolling para os links de navegação
     document.querySelectorAll('nav a').forEach(anchor => {
