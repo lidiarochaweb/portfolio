@@ -4,7 +4,313 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lídia Rocha | Portfólio</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #6e48aa;
+      --secondary: #9d50bb;
+      --accent: #ff6b8b;
+      --light: #f8f9fa;
+      --dark: #343a40;
+      --text: #333;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: #f9f9f9;
+    }
+
+   header {
+	background: linear-gradient(135deg, #000, var(--secondary));
+	color: white;
+	text-align: center;
+	padding: 2rem 1rem;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      transition: all 0.3s;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 3rem 1rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: var(--primary);
+      position: relative;
+    }
+
+    section h2::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      margin: 0.5rem auto;
+      border-radius: 2px;
+    }
+
+    #sobre {
+      background-color: white;
+      border-radius: 10px;
+      margin: 2rem auto;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    #sobre p {
+      margin-bottom: 1.2rem;
+      text-align: justify;
+    }
+
+    #projetos {
+      background-color: white;
+      border-radius: 10px;
+      margin: 2rem auto;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .projeto {
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .projeto h3 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+
+    .imagem-container {
+      position: relative;
+      display: inline-block;
+      margin: 1rem 0 2rem;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+
+    .imagem-projeto {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+
+    .imagem-container:hover .imagem-projeto {
+      transform: scale(1.05);
+      filter: brightness(0.8);
+    }
+
+    .imagem-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(110, 72, 170, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 10px;
+    }
+
+    .imagem-container:hover .imagem-overlay {
+      opacity: 1;
+    }
+
+    .botao-ampliar {
+      background: white;
+      color: var(--primary);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .botao-ampliar:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .projeto p {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      color: #666;
+    }
+
+    #contato {
+      background-color: white;
+      border-radius: 10px;
+      margin: 2rem auto;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .contato-wrapper {
+      margin: 1.5rem 0;
+    }
+
+    #botao-whatsapp {
+      display: inline-block;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    #botao-whatsapp:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #contato p {
+      margin: 1rem 0;
+    }
+
+    #contato a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    #contato a:hover {
+      color: var(--secondary);
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--dark);
+      color: white;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.mostrar {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-conteudo {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .modal-imagem {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-fechar {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      color: white;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .modal-fechar:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      nav {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      
+      .botao-ampliar {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -29,46 +335,79 @@
   <section id="projetos">
     <h2>Projetos</h2>
     <div class="projeto">
-      <h3>Identidade visual </h3>
-       <img src="Lucid_Origin_Professional_social_media_post_design_for_a_digit_0.jpg" alt="Descrição da imagem" width="220" height="220">
-       <img src="Lucid_Origin_Professional_social_media_post_design_for_a_digit_1.jpg" alt="Descrição da imagem" width="220" height="220">
-       <img src="Lucid_Origin_Professional_social_media_post_design_for_a_digit_2.jpg" alt="Descrição da imagem" width="220" height="220">
+      <h3>Identidade visual</h3>
+      <div class="imagem-container">
+        <img src="dornela.webp" alt="Projeto Identidade Visual" class="imagem-projeto">
+        <div class="imagem-overlay">
+          <button class="botao-ampliar" onclick="abrirModal()">
+            <i class="fas fa-search-plus"></i> Ampliar Imagem
+          </button>
+        </div>
+      </div>
       <p>Criação de logotipo, paleta de cores e materiais gráficos para cliente do setor de moda.</p>
     </div>
-    <div class="projeto">
-      <h3>banners e panfletos </h3>
-       <img src="Plataforma online Fundamenta e 1°médio 31 8755-2883 (2).png" alt="Descrição da imagem" width="220" height="220">
-       <img src="Lucid_Origin_Professional_social_media_post_design_for_a_digit_1.jpg" alt="Descrição da imagem" width="220" height="220">
-       <img src="Lucid_Origin_Professional_social_media_post_design_for_a_digit_2.jpg" alt="Descrição da imagem" width="220" height="220">
-      <p>.</p>
-    </div>
-  
-    <div class="projeto">
-      <h3>Social Media </h3>
-       <img src="Lucid_Origin_Professional_social_media_post_design_for_a_digit_0.jpg" alt="Descrição da imagem" width="220" height="220">
-       <img src="Lucid_Origin_Professional_social_media_post_design_for_a_digit_1.jpg" alt="Descrição da imagem" width="220" height="220">
-       <img src="Lucid_Origin_Professional_social_media_post_design_for_a_digit_2.jpg" alt="Descrição da imagem" width="220" height="220">
-      <p>Planejamento e execução de campanha digital com foco em engajamento e conversão.</p>
-    </div>
   </section>
+
+  <!-- Modal para imagem ampliada -->
+  <div id="modal" class="modal">
+    <div class="modal-conteudo">
+      <button class="modal-fechar" onclick="fecharModal()">&times;</button>
+      <img src="https://cdn.discordapp.com/attachments/1348115866885165139/1413241125409390652/WhatsApp_Image_2025-09-04_at_16.13.23_1.jpeg" alt="Projeto Identidade Visual" class="modal-imagem">
+    </div>
+  </div>
 
   <section id="contato">
     <h2>Contato</h2>
     <p>Email: lidia.c.leite.rocha@gmail.com</p>
     <div class="contato-wrapper">
-  <a id="botao-whatsapp" href="https://wa.me/5583996730581" target="_blank">Vamos trabalhar juntos?</a>
-</div>
+      <a id="botao-whatsapp" href="https://wa.me/5583996730581" target="_blank">Vamos trabalhar juntos?</a>
+    </div>
     <p>LinkedIn: <a href="https://www.linkedin.com/in/l%25C3%25ADdia-rocha-0503a0310/" target="_blank">linkedin.com/in/lidiarocha</a></p>
     <p>GitHub: <a href="https://github.com/lidiarocha" target="_blank">github.com/lidiarocha</a></p>
   </section>
-<script>
-  document.getElementById('mostrar-contato').addEventListener('click', function() {
-    document.getElementById('botao-whatsapp').style.display = 'inline-block';
-    this.style.display = 'none';
-  });
-</script>
+
   <footer>
     <p>© 2025 Lídia Rocha. Todos os direitos reservados.</p>
   </footer>
+
+  <script>
+    // Funções para o modal de imagem ampliada
+    function abrirModal() {
+      document.getElementById('modal').classList.add('mostrar');
+      document.body.style.overflow = 'hidden'; // Impede a rolagem da página quando o modal está aberto
+    }
+
+    function fecharModal() {
+      document.getElementById('modal').classList.remove('mostrar');
+      document.body.style.overflow = 'auto'; // Restaura a rolagem da página
+    }
+
+    // Fechar o modal clicando fora da imagem
+    document.getElementById('modal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        fecharModal();
+      }
+    });
+
+    // Fechar o modal pressionando a tecla ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        fecharModal();
+      }
+    });
+
+    // Adicionar smooth scrolling para os links de navegação
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        window.scrollTo({
+          top: targetElement.offsetTop - 20,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 </body>
 </html>
